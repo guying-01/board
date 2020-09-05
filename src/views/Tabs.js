@@ -12,12 +12,6 @@ const { Header, Content, Footer } = Layout;
 class Tabs extends React.Component {
   constructor(props){
     super(props)
-    const tabs = [
-      {name:'看板',index:0},
-      {name:'待办',index:1}
-    ]
-
-
     this.state = {
       curTab:'board'
     }
