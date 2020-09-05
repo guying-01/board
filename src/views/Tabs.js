@@ -1,32 +1,44 @@
-import React from 'react'
-import { Menu } from "antd";
+import React,{useState} from 'react'
 import Board from '@/views/board/'
 import Todo from '@/views/todo/'
-
+import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   FormOutlined,
   DashboardOutlined
 } from "@ant-design/icons";
+const { Header, Content, Footer } = Layout;
 
-const { SubMenu } = Menu;
 
 class Tabs extends React.Component {
-  state = {
-    current: "mail",
-  };
+  constructor(props){
+    super(props)
+    const tabs = [
+      {name:'看板',index:0},
+      {name:'待办',index:1}
+    ]
+
+
+    this.state = {
+      curTab:'board'
+    }
+  }
 
   handleClick = (e) => {
-    console.log("click ", e);
-    this.setState({ current: e.key });
+    this.setState({ curTab: e.key });
   };
 
   render() {
     const { current } = this.state;
     return (
-      <Menu
+
+      <Layout className="layout" id="layout">
+      <Header>
+        <div className="logo" />
+        <Menu
         onClick={this.handleClick}
         selectedKeys={[current]}
         mode="horizontal"
+        theme="dark"
       >
         <Menu.Item key="board" icon={<DashboardOutlined />}>
           看板
@@ -35,8 +47,22 @@ class Tabs extends React.Component {
           待办
         </Menu.Item>
       </Menu>
+      </Header>
+      <Content style={{ padding: '0 50px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb>
+        <div className="site-layout-content">Content</div>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+    </Layout>
+
     );
   }
 }
 
 export default Tabs;
+
+
