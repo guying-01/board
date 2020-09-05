@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Tabs } from '@/views/Tabs';
+import  Tabs  from '@/views/Tabs.js';
 function App() {
   return (
     <div className="App">
